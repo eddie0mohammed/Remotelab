@@ -30,7 +30,7 @@ char	*ft_itoa_base(int value, int base)
 	n = (value < 0) ? -(long)value : value;
 	while (i-- + sign)
 	{
-		s[i] = (n % base < 10) ? n % base + '0' : n % base + 'A' - 10;
+		s[i] = (n % base < 10) ? n % base + '0' : n % base + 'a' - 10;
 		n /= base;
 	}
 	(i == 0) ? s[i] = '-' : 0;

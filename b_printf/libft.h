@@ -16,7 +16,7 @@
 int		b_print_add(unsigned long add);
 int		b_print_uint(unsigned int uint);
 int		b_print_string(char *str);
-int		b_print_char(char c);
+int		b_print_char(int c);
 int		b_print_int(int integer);
 int		b_print_octal(unsigned octal);
 int		b_print_hex(unsigned int uint);

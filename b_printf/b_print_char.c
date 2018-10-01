@@ -12,20 +12,12 @@
 
 #include <unistd.h>
 
-void	ft_wri(char c)
-{
-	write(1, &c, 1);
-}
-
-int		b_print_char(char ch)
+int		b_print_char(int ch)
 {
 	int count;
 
 	count = 0;
-	if (ch)
-	{
-		ft_wri(ch);
-		count++;
-	}
+	write(1, &ch, 1);
+	count++;
 	return (count);
 }

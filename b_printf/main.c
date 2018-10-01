@@ -20,7 +20,7 @@ int	main(void)
 	char			*a = NULL;
 	char			b[] = "hey there,";
 	char			c[] = "this is a trial version!!!...";
-	char			d = 'A';
+	char			d = '\0';
 	char			e = 'b';
 	int				f = -1;
 	int				g = -23;
@@ -28,9 +28,9 @@ int	main(void)
 	int				i = -100;
 	unsigned int	ui = -10;
 	int				xx = 100;
-	int aaa = b_printf("aloha, %s %s %s %c %c %i %d %o %x %u\n%p\n",\
+	int aaa = b_printf("aloha %%, %s %s %s %c %c %i %d %o %x %u\n%p\n",\
 			a, b, c, d, e, f, g, h, i, ui, &xx);
-	int bbb = printf("aloha, %s %s %s %c %c %i %d %o %x %u\n%p\n",\
+	int bbb = printf("aloha %%, %s %s %s %c %c %i %d %o %x %u\n%p\n",\
 			a, b, c, d, e, f, g, h, i, ui, &xx);
 
 	printf("\n\n\n%d, %d \n", aaa, bbb);

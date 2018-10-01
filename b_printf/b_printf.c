@@ -25,6 +25,11 @@ int					condition(va_list lst, char c, int count)
 		count = count + b_print_string(va_arg(lst, char*));
 	else if (c == 'c')
 		count = count + b_print_char(va_arg(lst, int));
+	else if (c == '%')
+	{
+		count++;
+		ft_aaa(c);
+	}
 	else if (c == 'd' || c == 'i')
 		count = count + b_print_int(va_arg(lst, int));
 	else if (c == 'o')

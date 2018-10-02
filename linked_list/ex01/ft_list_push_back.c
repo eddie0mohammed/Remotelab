@@ -3,20 +3,17 @@
 
 void	ft_list_push_back(t_list **begin_list, void *data)
 {
-	t_list	*temp;
+	t_list *temp;
+	t_list *head;
 
-	temp = *begin_list;
-	if (!(temp))
-	{
-		temp = ft_create_elem(data);
-		return ;
-	}
+	head = *begin_list;
+	temp = ft_create_elem(data);
+	if (!head)
+		*begin_list = temp;
 	else
 	{
-		while (temp->next != NULL)
-		{
-			temp = temp->next;
-		}
-		temp->next = ft_create_elem(data);
+		while (head->next)
+			head = head->next;
+		head->next = temp;
 	}
 }

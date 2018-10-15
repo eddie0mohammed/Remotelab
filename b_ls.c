@@ -96,12 +96,12 @@ void	ft_argv_1(char *path)
 	//int 			fd;
 	struct dirent	*rd;
 	t_list 			**l_list;
-	t_list			*head;
+	//t_list			*head;
 
 	if(!(l_list = (t_list**)malloc(sizeof(t_list))))
 		return ;
-	head = (t_list*)malloc(sizeof(t_list));
-	head = *l_list;
+	//head = (t_list*)malloc(sizeof(t_list));
+	//head = *l_list;
 	directory = opendir(path);
 	if (!directory)	
 	{

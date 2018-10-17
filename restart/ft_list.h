@@ -6,8 +6,16 @@
 typedef struct s_list
 {
 	struct s_list 	*next;
-	void			*data;
+	void			*name;
 }				t_list;
+
+
+
+
+
+
+
+
 
 int	ft_strcmp(char *s1, char *s2);
 void	ft_list_sort(t_list *begin_list);

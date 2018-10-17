@@ -7,7 +7,7 @@ t_list	*ft_create_elem(void *data)
 
 	if(!(temp = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
-	temp->data = data;
+	temp->name = data;
 	temp->next = NULL;
 	return (temp);
 }
@@ -21,7 +21,7 @@ void	ft_printandfree(t_list **begin_list)
 	while (temp)
 	{
 		freedom = temp;
-		printf("%s\n", temp->data);
+		printf("%s\n", temp->name);
 		temp = temp->next;
 		free(freedom->next);
 	}

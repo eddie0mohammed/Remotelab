@@ -46,167 +46,167 @@ void	ft_argc_1_2(char *path)
 	{
 		// if (head->data == '.')
 		// 	continue;
-		printf("%s\n", head->data);
+		printf("%s\n", head->name);
 		head = head->next;
 	} 
 }
-/////////////above good for now
-void	ft_argc_more2(int argc, char **argv)
-{
-	int i;
-	DIR *directory;
-	struct dirent *rd;
-	int fd;
-	t_list	*head;
+// /////////////above good for now
+// void	ft_argc_more2(int argc, char **argv)
+// {
+// 	int i;
+// 	DIR *directory;
+// 	struct dirent *rd;
+// 	int fd;
+// 	t_list	*head;
 
-	head = NULL;
-	i = 1;
-	while (i < argc) // if file/directory name doesnt exist.
-	{
-		if ((!(directory = opendir(argv[i]))) && (fd = open(argv[i], O_RDWR)) == -1)
-			ft_list_push_back(&head, (void*)ft_strdup(argv[i])); // assign non-existing data to linkedlist, then sort and print
-			//printf("ls: %s: No such file or directory\n", argv[i]);
-		i++;
-	}
-	///////
-	// SORT
-	ft_list_sort(head);
+// 	head = NULL;
+// 	i = 1;
+// 	while (i < argc) // if file/directory name doesnt exist.
+// 	{
+// 		if ((!(directory = opendir(argv[i]))) && (fd = open(argv[i], O_RDWR)) == -1)
+// 			ft_list_push_back(&head, (void*)ft_strdup(argv[i])); // assign non-existing data to linkedlist, then sort and print
+// 			//printf("ls: %s: No such file or directory\n", argv[i]);
+// 		i++;
+// 	}
+// 	///////
+// 	// SORT
+// 	ft_list_sort(head);
 
-	//OUTPUT
-	// if (head == NULL)
-	// 	return ;
-	while (head != NULL)
-	{
-		// if (head->data == '.')
-		// 	continue;
-		printf("ls: %s: No such file or directory\n", head->data);
-		//printf("%s\n", head->data);
-		head = head->next;
-	}
-	// clear list for next step
-	ft_list_clear(&head);
+// 	//OUTPUT
+// 	// if (head == NULL)
+// 	// 	return ;
+// 	while (head != NULL)
+// 	{
+// 		// if (head->data == '.')
+// 		// 	continue;
+// 		printf("ls: %s: No such file or directory\n", head->data);
+// 		//printf("%s\n", head->data);
+// 		head = head->next;
+// 	}
+// 	// clear list for next step
+// 	ft_list_clear(&head);
 
-	//===========================================================================
-	//////????????????NEXT
-	/////// CHECK for multiple files 
-	i = 1;
-	while (i < argc) // loop check if not directory=> check for files
-	{
-		//directory = opendir(argv[i]);
-		if ((!(directory = opendir(argv[i]))) && (fd = open(argv[i], O_RDWR)) != -1)
-		{
-			// if (rd->d_name[0] == '.')
-			// 	continue;
+// 	//===========================================================================
+// 	//////????????????NEXT
+// 	/////// CHECK for multiple files 
+// 	i = 1;
+// 	while (i < argc) // loop check if not directory=> check for files
+// 	{
+// 		//directory = opendir(argv[i]);
+// 		if ((!(directory = opendir(argv[i]))) && (fd = open(argv[i], O_RDWR)) != -1)
+// 		{
+// 			// if (rd->d_name[0] == '.')
+// 			// 	continue;
 			
-			ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
+// 			ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
 			
-			//printf("%s\t", argv[i]);
-			close(fd);
-		}
-		i++;			
-	}
+// 			//printf("%s\t", argv[i]);
+// 			close(fd);
+// 		}
+// 		i++;			
+// 	}
 
-	ft_list_sort(head);
+// 	ft_list_sort(head);
 	
-	// if (head == NULL)
-	// 	return ;
-	while (head != NULL)
-	{
-		// if (head->data == '.')
-		// 	continue;
-		printf("%s\n", head->data);
-		//printf("%s\n", head->data);
-		head = head->next;
-	}
-	// clear list for next step
-	ft_list_clear(&head);
+// 	// if (head == NULL)
+// 	// 	return ;
+// 	while (head != NULL)
+// 	{
+// 		// if (head->data == '.')
+// 		// 	continue;
+// 		printf("%s\n", head->data);
+// 		//printf("%s\n", head->data);
+// 		head = head->next;
+// 	}
+// 	// clear list for next step
+// 	ft_list_clear(&head);
 
-	//printf("HEYYYYYYYYYYYYYYYYYYYYYY" );
-	//=============================================================
-
-
-	// //////sort argv
-	// i = 1;
-	// while (i < argc)
-	// {
+// 	//printf("HEYYYYYYYYYYYYYYYYYYYYYY" );
+// 	//=============================================================
 
 
-	// }
-
-		/// Check for directories
-	t_list *inside_directory;
-
-	inside_directory = NULL;
+// 	// //////sort argv
+// 	// i = 1;
+// 	// while (i < argc)
+// 	// {
 
 
+// 	// }
 
-	i = 1;
-	while (i < argc)
-	{
-		//directory = opendir(argv[i]);
-		if ((directory = opendir(argv[i])) != NULL)
-		{
-			printf("\n");
-			ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
-			//printf("%s:\n", argv[i]);
-			while ((rd = readdir(directory)) != NULL)
-			{
-				if (rd->d_name[0] == '.')
-					continue;
+// 		/// Check for directories
+// 	t_list *inside_directory;
+
+// 	inside_directory = NULL;
+
+
+
+// 	i = 1;
+// 	while (i < argc)
+// 	{
+// 		//directory = opendir(argv[i]);
+// 		if ((directory = opendir(argv[i])) != NULL)
+// 		{
+// 			printf("\n");
+// 			ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
+// 			//printf("%s:\n", argv[i]);
+// 			while ((rd = readdir(directory)) != NULL)
+// 			{
+// 				if (rd->d_name[0] == '.')
+// 					continue;
 			
-				ft_list_push_back(&inside_directory, (void*)ft_strdup(rd->d_name));
-				//ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
-			}
-			// printf("\n\n%s:\n", argv[i]);
-			// ft_argc_1_2(argv[i]);
-			closedir(directory);
+// 				ft_list_push_back(&inside_directory, (void*)ft_strdup(rd->d_name));
+// 				//ft_list_push_back(&head, (void*)ft_strdup(argv[i]));
+// 			}
+// 			// printf("\n\n%s:\n", argv[i]);
+// 			// ft_argc_1_2(argv[i]);
+// 			closedir(directory);
 
 
-			// // SORT
-			// ft_list_sort(head);
+// 			// // SORT
+// 			// ft_list_sort(head);
 
-			// // //OUTPUT
-			// printf("%s:\n", argv[i]);
-			// while (head != NULL)
-			// {
-			// 	// if (head->data == '.')
-			// 	// 	continue;
-			// 	printf("%s\n", head->data);
-			// 	//printf("%s\n", head->data);
-			// 	head = head->next;
-			// }
-		}
+// 			// // //OUTPUT
+// 			// printf("%s:\n", argv[i]);
+// 			// while (head != NULL)
+// 			// {
+// 			// 	// if (head->data == '.')
+// 			// 	// 	continue;
+// 			// 	printf("%s\n", head->data);
+// 			// 	//printf("%s\n", head->data);
+// 			// 	head = head->next;
+// 			// }
+// 		}
 		
-		i++;
-	}
+// 		i++;
+// 	}
 
-	// SORT
-	ft_list_sort(head);
-	ft_list_sort(inside_directory);
+// 	// SORT
+// 	ft_list_sort(head);
+// 	ft_list_sort(inside_directory);
 
-	// //OUTPUT
-	// if (head == NULL)
-	// 	return ;
+// 	// //OUTPUT
+// 	// if (head == NULL)
+// 	// 	return ;
 
-	while (head != NULL)
-	{
-		// if (head->data == '.')
-		// 	continue;
-		printf("%s:\n", head->data);
+// 	while (head != NULL)
+// 	{
+// 		// if (head->data == '.')
+// 		// 	continue;
+// 		printf("%s:\n", head->data);
 
-		while (inside_directory != NULL)
-		{
-			printf("%s\n",inside_directory->data);
-			inside_directory = inside_directory->next;
-		}
+// 		while (inside_directory != NULL)
+// 		{
+// 			printf("%s\n",inside_directory->data);
+// 			inside_directory = inside_directory->next;
+// 		}
 
 
-		printf("\n");
-		//printf("%s\n", head->data);
-		head = head->next;
-	} 
+// 		printf("\n");
+// 		//printf("%s\n", head->data);
+// 		head = head->next;
+// 	} 
 
-}
+// }
 
 
 
@@ -256,14 +256,14 @@ int	main(int argc, char **argv)
 	{
 		ft_argc_1_2(".");
 	}
-	else if (argc == 2)
-	{
-		ft_argc_1_2(argv[1]);
-	}
-	else if (argc > 2)
-	{
-		ft_argc_more2(argc, argv);
-	}
+	// else if (argc == 2)
+	// {
+	// 	ft_argc_1_2(argv[1]);
+	// }
+	// else if (argc > 2)
+	// {
+	// 	ft_argc_more2(argc, argv);
+	// }
 
 	//ft_list_sort(head);
 	// ft_printandfree(&head);

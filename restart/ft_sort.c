@@ -27,11 +27,11 @@ void	ft_list_sort(t_list *begin_list)
 		forward = current->next;
 		while(forward != NULL)
 		{
-			if (ft_strcmp(current->data, forward->data) > 0)
+			if (ft_strcmp(current->name, forward->name) > 0)
 			{
-				temp = current->data;
-				current->data = forward->data;
-				forward->data = temp;
+				temp = current->name;
+				current->name = forward->name;
+				forward->name = temp;
 			}
 			forward = forward->next;
 		}

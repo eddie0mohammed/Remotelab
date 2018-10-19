@@ -21,7 +21,7 @@ int	main(int argc, char const **argv)
 	struct stat		st;
 	
 	//time related stuff
-	time_t t ; 
+	//time_t t ; 
     struct tm *tmp ; 
     char MY_TIME[50]; 
    
@@ -35,7 +35,7 @@ int	main(int argc, char const **argv)
 	{
 		if ((fd = open(argv[1], O_RDWR)) == -1)
 		{
-			printf("ls: %s: No such file\n", argv[1]);
+			printf("ls: %s: No such file or directory\n", argv[1]);
 			return (0);
 		}
 		else
@@ -77,8 +77,8 @@ int	main(int argc, char const **argv)
     			//Size
     			printf("Size: %lld octets\n", st.st_size);
     			//Last modification date
-    			time(&t);
-    			tmp = localtime(&t);
+    			//time(&t);
+    			tmp = localtime(&st.st_mtime);
     			strftime(MY_TIME, sizeof(MY_TIME), "%b %d %H:%M", tmp);
     			printf("Last modification date: %s\n", MY_TIME);
 

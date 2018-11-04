@@ -1,5 +1,5 @@
-#include “get_next_line.h”
-#include “libft.h”
+#include "get_next_line.h"
+#include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,10 +11,10 @@ int return_line(const int fd, char **line, char **hash)
    char *here;
    temp = hash[fd];
    count = 0;
-   if ((here = strchr(temp, ‘\n’)))
-       *here = ‘\0’;
-   *line = ft_strdup(temp);
-   hash[fd] = ft_strdup(here + 1);
+   if ((here = strchr(temp, '\n')))
+       *here = '\0';
+   *line = strdup(temp);
+   hash[fd] = strdup(here + 1);
    if (!(*hash[fd]))
        hash[fd] = NULL;
    free(temp);
@@ -36,14 +36,14 @@ int get_next_line(const int fd, char **line)
        if (!hash[fd])
        {
            other = malloc(sizeof(char));
-           *other = ‘\0’;
+           *other = '\0';
            hash[fd] = other;
        }
        temp = ft_strjoin(hash[fd], buf);
        if (other)
            free(other);
        hash[fd] = temp;
-       if (strchr(buf, ‘\n’))
+       if (strchr(buf, '\n'))
            break ;
    }
    if (read_amount == -1)
@@ -57,32 +57,32 @@ int get_next_line(const int fd, char **line)
 int main(void)
 {
    int fd;
-   if ((fd = open(“words.txt”, O_RDONLY)) == -1)
+   if ((fd = open("file1.txt", O_RDONLY)) == -1)
        return (0);
    char *line;
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    close(fd);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
    get_next_line(fd, &line);
-   printf(“%s\n”, line);
+   printf("%s\n", line);
 }

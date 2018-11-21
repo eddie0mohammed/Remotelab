@@ -18,8 +18,8 @@ int ft_strcmp(char *s1, char *s2)
 
 int main(void)
 {
-	char a[] = "hello";
-	char b[] = "hi";
+	char a[] = "";
+	char b[] = "";
 	printf("%d\n", ft_strcmp(a, b));
 	printf("%d\n", strcmp(a, b));
 

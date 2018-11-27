@@ -4,6 +4,20 @@
 #include <unistd.h>
 #include <stdio.h>
 
+int validate_blocks(char *buf, int ret)
+{
+	int num_blocks;
+
+	num_blocks = ()
+
+
+	
+	// printf("%d\n", ret);
+	// printf("%s", buf);
+	// printf("\n");
+	return (1);
+}
+
 
 int validate_file(int fd)
 {
@@ -29,7 +43,7 @@ int validate_file(int fd)
 		if (buf[i - 1] == '\0')	// ending condition
 		{
 			printf("No Errors\n");
-			//validate_blocks(buf);
+			validate_blocks(buf, ret);
 			return (1);
 		}
 		if (buf[i - 1] != '\n')	// check for new line in each block

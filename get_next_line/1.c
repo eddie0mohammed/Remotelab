@@ -57,8 +57,10 @@ int	get_next_line(const int fd, char **line)
 int main(void)
 {
     int fd;
+	int fd1;
     char *line;
 	int i;
+	int j;
 
 	line = NULL;
     if ((fd = open("file1.txt", O_RDONLY)) != -1)
@@ -68,5 +70,16 @@ int main(void)
         	printf("%s\n", line);
 		}
     }
+	close(fd);
+	if ((fd1 = open("file2.txt", O_RDONLY)) != -1)
+	{
+		while ((i = get_next_line(fd1, &line)) > 0 )
+		{
+			printf("%s\n", line);
+		}
+
+
+	}
+	close(fd1);
     return (0);
 }

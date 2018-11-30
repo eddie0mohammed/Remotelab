@@ -3,71 +3,83 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "includes/header.h"
 
-
-int validate_file(int fd)
+void	initialize(char board[104][104])
 {
-	char buf[547];
-	int ret;
 	int i;
-	int num_blocks;
+	int j;
 
-	if ((ret = read(fd, buf, 546)) != -1)
-		buf[ret] = '\0';
-
-	//num_blocks = (ret / )
-	//check if new lines are at the right spot;
-	int j = 20;
-	i = 5;
-	while (i <= j)
+	i = 0;
+	j = 0;
+	while (i < 104)
 	{
-		if (buf[ret - 1] == '\n')	//check if new line at the end of file
+		j = 0;
+		while (j < 104)
 		{
-			printf("ERROR. New line AT THE END\n");
-			return (-1);
+			board[i][j] = '.';
+			j++;
 		}
-		if (buf[i - 1] == '\0')	// ending condition
-		{
-			printf("No Errors\n");
-			//validate_blocks(buf);
-			return (1);
-		}
-		if (buf[i - 1] != '\n')	// check for new line in each block
-		{
-			printf("ERROR. New line MISSING IN block\n");
-			return (-1);
-		}
-		if (i == j && buf[i] != '\n' && buf[i] != '\0')	//check for new line AFTER each block
-		{
-			printf("Error. No new line AFTER block\n");
-			return (-1);
-		}	
-		if (i == j && buf[i] == '\n')
-		{
-			i += 1;
-			j += 21;
-		}
-		i += 5;
+		i++;
 	}
-	return (0);
 }
 
+// void	print_board(char board[104][104])
+// {
+// 	int i = 0;
+// 	int j = 0;
 
+// 	while (i < 104)
+// 	{
+// 		j = 0;
+// 		while (j < 104)
+// 		{
+// 			ft_putchar(board[i][j]);
+// 			j++;
+// 		}
+// 		ft_putchar('\n');
+// 		i++;
+// 	}
+// }
 
-int main(int argc, char const *argv[])
+void	ft_continue(char *buf)
+{
+	char board[104][104];
+
+	initialize(board);
+	//ft_putstr(buf);
+	//print_board(board);
+	
+}
+
+int main(int argc, char **argv)
 {
 	int fd;
+	char *buf;
+	//char *list;
 
 	if (argc == 2)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) != -1)
-			validate_file(fd);
-
+		{
+			if((buf = validate_file(fd)) == NULL) 
+			{
+				ft_putstr("Error in File\n");
+				return (0);
+			}
+			else
+			{
+				ft_putstr("\nVerification SUCCESS\n");
+				ft_continue(buf);
+			}
+		}
+		else
+			ft_putstr("Error: File Doesn't Exist\n");
+		free(buf);
 		close(fd);
 	}
 	else
-	{
-		printf("Error: No file  as argument\n");
-	}
-	return 0;
+		ft_putstr("usage : fillit file_name\n");
+	return (0);
 }

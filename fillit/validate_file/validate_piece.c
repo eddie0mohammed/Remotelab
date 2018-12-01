@@ -63,3 +63,5 @@ int		validate_piece(char *buf, int ret)
 	}
 	return (1);
 }
+
+//  arr[] = [count, i, j, max, min]

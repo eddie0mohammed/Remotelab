@@ -19,7 +19,7 @@ int		validate_piece(char *buf, int ret);
 int		validate_blocks(char *buf, int ret);
 char	*validate_file(int fd);
 
-typedef struct s_tetrimino
+typedef struct s_list
 {
 	struct s_tetrimino	*next;
 	int 				height;
@@ -27,6 +27,6 @@ typedef struct s_tetrimino
 	//char 				array[4][4];
 	//int				count;
 	//char				letter;
-}						t_tetrimino;
+}						t_list;
 
 #endif

@@ -3,11 +3,11 @@
 
 char	*ft_itoa(int num)
 {
-	int i;
-	long n;
-	int base = 10;
-	int sign;
 	char *str;
+	int base = 10;
+	int i;
+	int sign;
+	long n;
 
 	n = (num < 0) ? -(long)num : num;
 	sign = (num < 0 && base == 10) ? -1 : 1;
@@ -18,7 +18,7 @@ char	*ft_itoa(int num)
 		return (NULL);
 	str[i] = '\0';
 	n = (num < 0) ? -(long)num : num;
-	while (i-- +sign)
+	while (i-- + sign)
 	{
 		str[i] = (n % base < 10) ? n % base + '0' : n % base + 'A' - 10;
 		n /= base;

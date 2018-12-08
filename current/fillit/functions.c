@@ -36,7 +36,7 @@ int		ft_get_nearest_square(int size)
 	int min_size;
 
 	min_size = 2;
-	while ((min_size * min_size) < (size * 4))
+	while ((size * 4) > (min_size * min_size))
 	{
 		min_size++;
 	}

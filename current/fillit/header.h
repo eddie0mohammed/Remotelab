@@ -46,12 +46,20 @@ t_list	*ft_lst_add_back(t_list *current, t_list **lst, t_tetri *tetri);
 
 int		ft_get_size(t_list *begin_list);
 int		ft_get_nearest_square(int size);
-int 	next_tetri(t_board *board, t_list *tetriminos);
-int		solve(t_board *board, t_list *tetriminos);
-int 	fits(t_board *bord, t_tetri *tetri, int row, int column);
-int 	add_tetri(t_board *bord, int row, int column, t_tetri *tetri);
-int 	delete_tetri(t_board *bord, int row, int column, t_tetri *tetri);
+//int 	next_tetri(t_board *board, t_list *tetriminos);
+//int		solve(t_board *board, t_list *tetriminos);
+//int 	fits(t_board *bord, t_tetri *tetri, int row, int column);
+//int 	add_tetri(t_board *bord, int row, int column, t_tetri *tetri);
+//int 	delete_tetri(t_board *bord, int row, int column, t_tetri *tetri);
 void	print_board(char board[104][104], int size);
+
+
+int		delete_tet(t_board *brd, int row, int col, t_tetri *tet);
+int		add_tet(t_board *brd, int row, int col, t_tetri *tet);
+int		fits(t_board *brd, t_tetri *tet, int row, int col);
+int		next_tet(t_board *brd, t_list *tetriminos);
+int		solve(t_board *brd, t_list *tetriminos);
+
 
 
 

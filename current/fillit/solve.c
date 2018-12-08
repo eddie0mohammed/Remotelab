@@ -1,19 +1,60 @@
 #include "header.h"
 
-int fits(t_board *bord, t_tetri *tetri, int row, int column)
+int		delete_tet(t_board *brd, int row, int column, t_tetri *tet)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (i < 4 - tetri->row)
+	while (i < 4 - tet->row)
 	{
 		j = 0;
-		while (j < 4 - tetri->column)
+		while (j < 4 - tet->column)
 		{
-			if (tetri->shape[tetri->row + i][tetri->column + j] == '#')
+			if (tet->shape[tet->row + i][tet->column + j] == '#')
+				(brd->board)[row + i][column + j] = 0;
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int		add_tet(t_board *brd, int row, int column, t_tetri *tet)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < 4 - tet->row)
+	{
+		j = 0;
+		while (j < 4 - tet->column)
+		{
+			if (tet->shape[tet->row + i][tet->column + j] == '#')
+				(brd->board)[row + i][column + j] = tet->alpha;
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int		fits(t_board *brd, t_tetri *tet, int row, int column)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < 4 - tet->row)
+	{
+		j = 0;
+		while (j < 4 - tet->column)
+		{
+			if (tet->shape[tet->row + i][tet->column + j] == '#')
 			{
-				if (column + j >= bord->size || row + i >= bord->size || (bord->board[row + i][column + j]))
+				if (column + j >= brd->size || row + i >= brd->size
+					|| (brd->board)[row + i][column + j])
 					return (0);
 			}
 			j++;
@@ -23,80 +64,37 @@ int fits(t_board *bord, t_tetri *tetri, int row, int column)
 	return (1);
 }
 
-int add_tetri(t_board *bord, int row, int column, t_tetri *tetri)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 4 - tetri->row)
-	{
-		j = 0;
-		while (j < 4 - tetri->column)
-		{
-			if (tetri->shape[tetri->row + i][tetri->column + j] == '#')
-				(bord->board)[row + i][column + j] = tetri->alpha;
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int delete_tetri(t_board *bord, int row, int column, t_tetri *tetri)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 4 - tetri->row)
-	{
-		j = 0;
-		while (j < 4 - tetri->column)
-		{
-			if (tetri->shape[tetri->row + i][tetri->column + j] == '#')
-				(bord->board)[row + i][column + j] = 0;
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int next_tetri(t_board *board, t_list *tetriminos)
+int		next_tet(t_board *brd, t_list *tetriminos)
 {
 	int row;
-	int column;
+	int col;
 
 	if (!tetriminos)
 		return (1);
 	row = 0;
-	while (row < board->size)
+	while (row < brd->size)
 	{
-		column = 0;
-		while (column < board->size)
+		col = 0;
+		while (col < brd->size)
 		{
-			if (fits(board, tetriminos->content, row, column))
+			if (fits(brd, tetriminos->content, row, col))
 			{
-				add_tetri(board, row, column, tetriminos->content);
-				if (next_tetri(board, tetriminos->next)) 	//recursive
+				add_tet(brd, row, col, tetriminos->content);
+				if (next_tet(brd, tetriminos->next))
 					return (1);
 				else
-					delete_tetri(board, row, column, tetriminos->content);
+					delete_tet(brd, row, col, tetriminos->content);
 			}
-			column++;
+			col++;
 		}
 		row++;
 	}
 	return (0);
 }
 
-
-
-int	solve(t_board *board, t_list *tetriminos)
+int		solve(t_board *brd, t_list *tetriminos)
 {
-	while (!next_tetri(board, tetriminos))
-		board->size += 1;
+	while (!next_tet(brd, tetriminos))
+		(brd->size)++;
 	return (1);
-
 }

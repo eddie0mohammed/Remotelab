@@ -1,0 +1,60 @@
+.red 
+{
+	color : red;
+	font-size: 12px;
+}
+
+.h3
+{
+	font-size: 20px
+	color: orange;
+	background: grey;
+	width: 140px;
+}
+
+#table
+{
+	color: green;
+	
+}
+
+.sp
+{
+	text-decoration: underline;
+	color:red;
+}
+
+#lorem
+{
+	color:grey;
+	background: pink;
+	width: 75%;
+}
+
+#h1
+{
+	color :blue;
+	background: green;
+	width:100px;
+}
+
+#h2
+{
+	color:orange;
+	background-color: purple;
+	width:38%;
+}
+
+.border
+{
+	border: 10px black solid;
+	border-color: grey: 
+}
+
+.final
+{
+	color: red;
+	background: black;
+	width: 14%;
+
+}

@@ -1,0 +1,38 @@
+body
+{
+    font-family:Arial;
+}
+
+a:hover
+{
+    color:white;
+    text-decoration: none;
+}
+
+.menu li
+{
+    display: none;
+    padding:10px 10px 10px 20px;
+    border-top:1px solid orange;
+}
+
+.menu li:nth-of-type(1)
+{
+    display: block;
+    border-top:0px;
+    padding-left:10px;
+}
+
+.menu:hover li
+{
+    display:block;
+}
+
+.menu
+{
+    background-color: pink;
+    width:25%;
+    padding:0px;
+    float:left;
+    text-align: center;
+}

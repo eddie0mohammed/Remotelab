@@ -1,0 +1,19 @@
+
+
+#container
+{
+	margin:0 auto;
+	margin-top:20%;
+	width: 50%;
+	border:2px solid gray;
+}
+
+.cross
+{
+	color:gray;
+	text-decoration: line-through;
+}
+.hide
+{
+	display:none;
+}
